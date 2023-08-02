@@ -4,7 +4,9 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const port = 12345;
+
+// Use process.env.PORT if it's available, otherwise fallback to 12345
+const port = process.env.PORT || 12345;
 
 app.use(cors());
 app.use(express.json());
@@ -38,6 +40,7 @@ app.post('/send-email', (req, res) => {
   });
 });
 
+// Listen on the provided PORT
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });
